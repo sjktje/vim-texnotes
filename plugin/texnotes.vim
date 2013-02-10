@@ -66,3 +66,18 @@ function! TexnotesEnumerate()
 endfunction
 
 command! -bar -range=% TexnotesEnumerate :call TexnotesEnumerate()
+
+function! TexnotesNew()
+    let suffix = 'a'
+    let current_date = strftime("%Y-%m-%d")
+    let file_name = current_date . suffix . '.tex'
+
+    while filereadable(file_name)
+        let suffix = nr2char(char2nr(suffix) + 1)
+        let file_name = current_date . '.' . suffix . '.tex'
+    endwhile
+
+    exe 'e ' . file_name
+endfunction
+
+command! -bar -range=% TexnotesNew :call TexnotesNew()
