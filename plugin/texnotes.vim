@@ -78,6 +78,9 @@ function! TexnotesNew()
     endwhile
 
     exe 'e ' . file_name
+    let err = append(0, "\\section{" . current_date . ": }")
+    " " Place cursor after colon + space
+    normal gg0f:2l
 endfunction
 
 command! -bar -range=% TexnotesNew :call TexnotesNew()
