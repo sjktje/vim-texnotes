@@ -74,7 +74,7 @@ function! TexnotesNew()
 
     while filereadable(file_name)
         let suffix = nr2char(char2nr(suffix) + 1)
-        let file_name = current_date . '.' . suffix . '.tex'
+        let file_name = current_date . suffix . '.tex'
     endwhile
 
     exe 'e ' . file_name
