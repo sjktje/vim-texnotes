@@ -84,3 +84,9 @@ function! TexnotesNew()
 endfunction
 
 command! -bar -range=% TexnotesNew :call TexnotesNew()
+
+function! TexnotesIncludeChapters()
+    :r !system('for a in ', expand('%:h') + chapters, '; do echo chapters/${a}; done')
+endfunction
+
+command! TexnotesIncludeChapters :call TexnotesIncludeChapters()
